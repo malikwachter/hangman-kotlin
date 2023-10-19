@@ -1,13 +1,11 @@
 import kotlin.system.exitProcess
 fun main() {
-    var singleplayer = false
     var guess: String
     var life = 9
-    var secretWord = ""
 
     println("Welcome to hangman! Choose a gamemode:\n 1) Singleplayer (A random word gets choosen by the computer)\n 2) Multiplayer (Another player can choose a word.)")
-    var mainMenuInput = readln()
-    singleplayer = when(mainMenuInput.toInt()) {
+    val mainMenuInput = readln()
+    val singlePlayer = when(mainMenuInput.toInt()) {
         1 -> true
         2 -> false
         else -> {
@@ -16,7 +14,7 @@ fun main() {
         }
     }
 
-    var randomWord = if(singleplayer){
+    val randomWord = if(singlePlayer){
         val possibleWords = listOf("account", "football", "cricket", "adjustment", "advertisement", "agreement", "brother", "butter", "business", "chance", "competition", "distance", "education", "experience", "government", "politics", "democracy", "anarchy", "communism", "dictatorship", "harmony", "hate", "history", "instrument", "guitar", "humor", "industry", "invention", "laugh", "knowledge", "mountain", "observation", "linux", "windows", "organization", "punishment", "reaction", "representative", "selection", "smash", "cringe", "hangman", "hospital", "police", "library", "monkey", "muscle", "stomach", "umbrella", "academy", "streaming", "privacy", "piracy", "france", "germany", "europe", "party", "spider", "solider")
         possibleWords.random()
     } else {
@@ -29,7 +27,7 @@ fun main() {
 
     println("A word has been chosen!\nIts ${randomWord.length} letters long.")
 
-    secretWord = "_".repeat(randomWord.length)
+    val secretWord = "_".repeat(randomWord.length)
     val sb = StringBuilder(secretWord)
 
     while(life != 0) {
